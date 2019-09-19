@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Signup for jChat now!">
+        <meta name="author" content="SNathJr">
+
+        <title>Login to Voter Portal</title>
+
+        <link rel="icon" href="vote-small.ico" type="image/x-icon" sizes="16x16">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <nav class="navbar navbar-light bg-light">
+                <a class="navbar-brand" href="{{ url_for('index') }}">
+                    <img src="/static/vote-logo.ico" width="35" height="35" class="d-inline-block align-top" alt="logo">
+                </a>
+                <form action="{{ url_for('signup') }}" class="form-inline">
+                    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Sign Up</button>
+                </form>
+            </nav>
+            <br>
+            <form class="container col-md-8 col-lg-6">
+                <div class="alert alert-success text-center" role="alert">
+                    Login to access your Voter ID.
+                </div>
+                <div class="form-group">
+                    <label for="email" class="sr-only">Email: </label>
+                    <input type="email" id="email" class="form-control" name="emailid" placeholder="email@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="password" class="sr-only">Password: </label>
+                    <input type="password" id="password" class="form-control" name="password" placeholder="password">
+                </div>
+                <button type="submit" class="btn btn-success btn-lg btn-block">Login!</button>
+                <div class="form-group text-center">
+                    <br>
+                    <small>Don't have an account yet? <a href="{{ url_for('signup') }}">Signup</a> now!</small>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

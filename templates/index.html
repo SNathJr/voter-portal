@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Welcome to jChat. A chatting web-app created on flask micro-framework.">
+        <meta name="author" content="SNathJr">
+
+        <title>Voter Portal</title>
+
+        <link rel="icon" href="vote-small.ico" type="image/x-icon" sizes="16x16">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <nav class="navbar navbar-light bg-light">
+                <a class="navbar-brand" href="{{ url_for('index') }}">
+                    <img src="/static/vote-logo.ico" width="35" height="35" class="d-inline-block align-top" alt="logo">
+                </a>
+                <form action="{{ url_for('login') }}" class="form-inline">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+                </form>
+            </nav>
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-4">Welcome to Voter Portal!</h1>
+                    <p class="lead">An unified voter ID creation and updation portal.</p>
+                    <p class="lead">Join now, its secure and free!</p>
+                    <a class="btn btn-primary btn-lg" href="{{ url_for('signup') }}" role="button">Sign Up</a>
+                </div>
+            </div>
+            <footer>
+                <div class="text-right">
+                    <img src="/static/jinu-made-it.png" alt="jinu made it signature">
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>
