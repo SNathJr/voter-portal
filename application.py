@@ -9,6 +9,7 @@ from flask_bcrypt import generate_password_hash, check_password_hash
 
 # Import SQLAlchemy db model
 from models import *
+from sqlalchemy import exc
 
 # cloudinary imports for image CDN
 from cloudinary.uploader import upload
@@ -62,8 +63,11 @@ def signup():
                             emailid=request.form.get('emailid'),
                             password=generate_password_hash(request.form.get('password')).decode('utf-8'),
                             verified=True)
-        db.session.add(session['user'])
-        db.session.commit()
+        try:
+            db.session.add(session['user'])
+            db.session.commit()
+        except exc.IntegrityError:
+            return "Email ID already taken, please try again with different email ID."
         return redirect(url_for('login'))
 
 
@@ -72,8 +76,11 @@ def login():
     if request.method == 'GET':
         return render_template("login.html")
     if request.method == 'POST':
-        session['user'] = User.query.filter_by(emailid=request.form.get('emailid')).first()
-        if check_password_hash(session['user'].password, request.form.get('password')):
-            session['loggedin'] = True
-            return "login successful"
+        try:
+            session['user'] = User.query.filter_by(emailid=request.form.get('emailid')).first()
+            if check_password_hash(session['user'].password, request.form.get('password')):
+                session['loggedin'] = True
+                return "login successful"
+        except AttributeError:
+            return "There is no account with this Email ID, create one now!"
         return redirect(url_for('login'))
